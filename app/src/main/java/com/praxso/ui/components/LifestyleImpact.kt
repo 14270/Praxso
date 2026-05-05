@@ -24,29 +24,32 @@ fun LifestyleImpact(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(vertical = 12.dp)
+            .background(Color(0xFFF5FAF9))
+            .padding(vertical = 12.dp, horizontal = 8.dp)
     ) {
         Text(
             text = "Lifestyle Impact",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.SemiBold,
             fontFamily = dmSans,
             color = Color(0xFF1A1A1A),
-            modifier = Modifier.padding(start = 4.dp, bottom = 16.dp)
+            lineHeight = 16.sp,
+            letterSpacing = (-0.32).sp,
+            modifier = Modifier.padding(start = 16.dp, bottom = 16.dp)
         )
 
         Card(
             shape = RoundedCornerShape(12.dp),
             modifier = Modifier
-                .width(360.dp)
-                .height(220.dp) // Increased height to accommodate more vertical spacing
+                .fillMaxWidth()
+                .height(240.dp) // Increased height to accommodate more vertical spacing
                 .align(Alignment.CenterHorizontally),
             colors = CardDefaults.cardColors(containerColor = Color.White),
             elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
         ) {
             Column(
                 modifier = Modifier.padding(18.dp),
-                verticalArrangement = Arrangement.spacedBy(12.dp) // Increased spacing for "more place"
+                verticalArrangement = Arrangement.spacedBy(18.dp) // Increased spacing for "more place"
             ) {
                 // Header
                 Row(
@@ -96,14 +99,14 @@ fun LifestyleImpact(modifier: Modifier = Modifier) {
                 val sleepGradient = Brush.verticalGradient(
                     colors = listOf(
                         Color(0xFFB4A8DA),
-                        Color(0xFFB4A8DA).copy(alpha = 0.34f)
+                        Color(0x63B4A8DA).copy(alpha = 0.34f)
                     )
                 )
 
                 CorrelationRow(label = "Sleep", activeBlocks = 7, defaultBrush = sleepGradient)
-                CorrelationRow(label = "Hydrate", activeBlocks = 3, defaultBrush = Brush.verticalGradient(listOf(Color(0xFFFFB2B2), Color(0xFFFF7E7E))))
-                CorrelationRow(label = "Caffeine", activeBlocks = 5, defaultBrush = Brush.verticalGradient(listOf(Color(0xFFB4D4CC), Color(0xFF8EB7AF))))
-                CorrelationRow(label = "Exercise", activeBlocks = 4, defaultBrush = Brush.verticalGradient(listOf(Color(0xFFFFD5D5), Color(0xFFFBAFAF))))
+                CorrelationRow(label = "Hydrate", activeBlocks = 3, defaultBrush = Brush.verticalGradient(listOf(Color(0x8FE99597), Color(0xFFE99597))))
+                CorrelationRow(label = "Caffeine", activeBlocks = 5, defaultBrush = Brush.verticalGradient(listOf(Color(0xFF6E8C82), Color(0x616E8C82))))
+                CorrelationRow(label = "Exercise", activeBlocks = 4, defaultBrush = Brush.verticalGradient(listOf(Color(0x85F5C3C4), Color(0xFFF5C3C4))))
                 
                 Spacer(modifier = Modifier.height(4.dp)) // Bottom breathing room
             }
@@ -125,7 +128,7 @@ fun CorrelationRow(
     ) {
         Text(
             text = label,
-            modifier = Modifier.width(56.dp), // Increased to 56dp to prevent truncation of "Exercise" and "Caffeine"
+            modifier = Modifier.width(42.dp), // Increased to 56dp to prevent truncation of "Exercise" and "Caffeine"
             fontSize = 11.sp,
             fontWeight = FontWeight.Normal,
             fontFamily = dmSans,
@@ -136,7 +139,7 @@ fun CorrelationRow(
 
         Row(
             modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.spacedBy(6.dp) // Spacing from image
+            horizontalArrangement = Arrangement.spacedBy(2.dp) // Spacing from image
         ) {
             repeat(9) { index ->
                 val isActive = index < activeBlocks
@@ -148,11 +151,11 @@ fun CorrelationRow(
 
                 Box(
                     modifier = Modifier
-                        .width(23.dp) // Fixed width: 28px/dp
-                        .height(18.dp) // Better proportion like image
+                        .width(26.dp) // Fixed width: 28px/dp
+                        .height(20.dp) // Better proportion like image
                         .background(
                             brush = brush,
-                            shape = RoundedCornerShape(6.dp)
+                            shape = RoundedCornerShape(4.dp)
                         )
                 )
             }

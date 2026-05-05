@@ -15,6 +15,8 @@ import com.praxso.ui.theme.dmSans
 import com.praxso.R
 
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.tooling.preview.Preview
+import com.praxso.ui.theme.PraxsoTheme
 
 @Composable
 fun Header(modifier: Modifier = Modifier) {
@@ -45,5 +47,13 @@ fun Header(modifier: Modifier = Modifier) {
                 .align(Alignment.TopCenter)
                 .padding(top = topPaddingText)
         )
+    }
+}
+
+@Preview(showBackground = true, backgroundColor = 0xFFF5FAF9)
+@Composable
+fun HeaderPreview() {
+    PraxsoTheme {
+        Header()
     }
 }

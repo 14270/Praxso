@@ -1,5 +1,6 @@
 package com.praxso.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,22 +22,26 @@ fun SymptomChart(modifier: Modifier = Modifier) {
     Column(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp, vertical = 12.dp)
+            .background(Color(0xFFF5FAF9))
+            .padding(horizontal = 4.dp, vertical = 12.dp)
     ) {
         Text(
             text = "Body Signals",
-            fontSize = 24.sp,
-            fontWeight = FontWeight.Bold,
+            fontSize = 16.sp,
+            fontWeight = FontWeight.SemiBold,
             fontFamily = dmSans,
             color = Color(0xFF1A1A1A),
-            modifier = Modifier.padding(start = 4.dp, bottom = 16.dp)
+            lineHeight = 16.sp,
+            letterSpacing = (-0.32).sp,
+            modifier = Modifier
+                .padding(start = 14.dp, bottom = 16.dp)
         )
 
         Card(
             shape = RoundedCornerShape(12.dp),
-            modifier = Modifier
-                .width(343.dp)
+            modifier = Modifier.fillMaxWidth()
                 .height(376.dp)
+                .padding(horizontal = 8.dp)
                 .align(Alignment.CenterHorizontally),
             colors = androidx.compose.material3.CardDefaults.cardColors(
                 containerColor = Color.White
@@ -48,15 +53,18 @@ fun SymptomChart(modifier: Modifier = Modifier) {
             Column(
                 modifier = Modifier
                     .fillMaxSize()
-                    .padding(24.dp)
+                    .padding(top = 16.dp, start = 24.dp, end = 24.dp, bottom = 24.dp)
             ) {
                 // Header Inside Card
                 Text(
                     text = "Symptom Trends",
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.Bold,
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight.SemiBold,
                     fontFamily = dmSans,
-                    color = Color(0xFF1A1A1A)
+                    color = Color(0xFF1A1A1A),
+                    lineHeight = 16.sp,
+                    letterSpacing = (-0.32).sp,
+                    modifier = Modifier.size(width = 151.dp, height = 21.dp)
                 )
                 
                 Text(
@@ -65,7 +73,9 @@ fun SymptomChart(modifier: Modifier = Modifier) {
                     fontWeight = FontWeight.Normal,
                     fontFamily = dmSans,
                     color = Color(0xFF757575),
-                    modifier = Modifier.padding(bottom = 8.dp)
+                    lineHeight = 14.sp,
+                    modifier = Modifier
+                        .padding(bottom = 8.dp)
                 )
 
                 Box(
@@ -74,9 +84,9 @@ fun SymptomChart(modifier: Modifier = Modifier) {
                 ) {
                     // Donut Chart Canvas
                     androidx.compose.foundation.Canvas(
-                        modifier = Modifier.size(240.dp) // Slightly larger
+                        modifier = Modifier.size(220.dp)
                     ) {
-                        val strokeWidth = 60.dp.toPx() // Thicker for "covered" look
+                        val strokeWidth = 50.dp.toPx() 
 
                         // Background Track
                         drawArc(
@@ -90,7 +100,7 @@ fun SymptomChart(modifier: Modifier = Modifier) {
                         // Bloating - 31%
                         drawArc(
                             brush = androidx.compose.ui.graphics.Brush.linearGradient(
-                                colors = listOf(Color(0xFFF5F2FF), Color(0xFFB4A8DA))
+                                colors = listOf(Color(0xFFB4A8DA), Color(0xFFF5F2FF))
                             ),
                             startAngle = -90f,
                             sweepAngle = 112f,
@@ -101,7 +111,7 @@ fun SymptomChart(modifier: Modifier = Modifier) {
                         // Fatigue - 21%
                         drawArc(
                             brush = androidx.compose.ui.graphics.Brush.linearGradient(
-                                colors = listOf(Color(0xFFFFE4E4), Color(0xFFE99597))
+                                colors = listOf(Color(0xFFFDF2F2), Color(0xFFE99597))
                             ),
                             startAngle = 22f,
                             sweepAngle = 75f,
@@ -112,7 +122,7 @@ fun SymptomChart(modifier: Modifier = Modifier) {
                         // Acne - 17%
                         drawArc(
                             brush = androidx.compose.ui.graphics.Brush.linearGradient(
-                                colors = listOf(Color(0xFFF2FAF8), Color(0xFFB4D4CC))
+                                colors = listOf(Color(0xFFFAFDFA), Color(0xFF6E8C82))
                             ),
                             startAngle = 97f,
                             sweepAngle = 61f,
@@ -123,7 +133,7 @@ fun SymptomChart(modifier: Modifier = Modifier) {
                         // Mood - 30%
                         drawArc(
                             brush = androidx.compose.ui.graphics.Brush.linearGradient(
-                                colors = listOf(Color(0xFFFFFFFF), Color(0xFFFDECEE))
+                                colors = listOf(Color(0xFFFFF1F1), Color(0xFFF4C3C4))
                             ),
                             startAngle = 158f,
                             sweepAngle = 112f,
@@ -136,25 +146,25 @@ fun SymptomChart(modifier: Modifier = Modifier) {
                     SymptomLabel(
                         percentage = "31%",
                         label = "Bloating",
-                        modifier = Modifier.align(Alignment.CenterEnd).offset(x = (10).dp, y = (-40).dp)
+                        modifier = Modifier.align(Alignment.Center).offset(x = 116.dp, y = (-78).dp)
                     )
                     
                     SymptomLabel(
                         percentage = "21%",
                         label = "Fatigue",
-                        modifier = Modifier.align(Alignment.BottomCenter).offset(x = (60).dp, y = (-20).dp)
+                        modifier = Modifier.align(Alignment.Center).offset(x = 72.dp, y = 120.dp)
                     )
                     
                     SymptomLabel(
                         percentage = "17%",
                         label = "Acne",
-                        modifier = Modifier.align(Alignment.BottomStart).offset(x = (0).dp, y = (-40).dp)
+                        modifier = Modifier.align(Alignment.Center).offset(x = (-86).dp, y = 112.dp)
                     )
                     
                     SymptomLabel(
                         percentage = "30%",
                         label = "Mood",
-                        modifier = Modifier.align(Alignment.TopStart).offset(x = (10).dp, y = (40).dp)
+                        modifier = Modifier.align(Alignment.Center).offset(x = (-116).dp, y = (-78).dp)
                     )
                 }
             }
@@ -165,28 +175,33 @@ fun SymptomChart(modifier: Modifier = Modifier) {
 @Composable
 fun SymptomLabel(percentage: String, label: String, modifier: Modifier = Modifier) {
     androidx.compose.material3.Surface(
-        modifier = modifier.size(72.dp),
+        modifier = modifier.size(72.dp), // Slightly larger to match design proportions
         shape = CircleShape,
         color = Color.White,
-        shadowElevation = 6.dp
+        shadowElevation = 8.dp,
+        tonalElevation = 2.dp
     ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            verticalArrangement = Arrangement.Center,
+            modifier = Modifier.padding(4.dp)
         ) {
             Text(
                 text = percentage,
-                fontSize = 14.sp,
+                fontSize = 16.sp,
                 fontWeight = FontWeight.Bold,
                 fontFamily = dmSans,
-                color = Color(0xFF1A1A1A)
+                color = Color(0xFF1A1A1A),
+                lineHeight = 16.sp
             )
+            Spacer(modifier = Modifier.height(2.dp))
             Text(
                 text = label,
-                fontSize = 11.sp,
+                fontSize = 12.sp,
                 fontWeight = FontWeight.Normal,
                 fontFamily = dmSans,
-                color = Color(0xFF757575)
+                color = Color(0xFF1A1A1A),
+                lineHeight = 12.sp
             )
         }
     }
@@ -210,7 +225,7 @@ fun SymptomChartPreview() {
         SymptomChart(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(4.dp)
         )
     }
 }

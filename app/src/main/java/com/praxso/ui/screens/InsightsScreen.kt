@@ -20,7 +20,7 @@ import com.praxso.ui.components.WeightChart
 @Composable
 fun InsightsScreen() {
     Box(
-        modifier = Modifier.fillMaxSize().background(Color.White)
+        modifier = Modifier.fillMaxSize().background(Color(0xFFF5FAF9))
     ) {
         // Soft pink glow background at the top right
         Box(
@@ -46,9 +46,9 @@ fun InsightsScreen() {
             item { Spacer(modifier = Modifier.height(24.dp)) }
             item { StabilityCard() }
             item { CycleTrends() }
-            item { Box(modifier = Modifier.padding(horizontal = 16.dp)) { WeightChart() } }
-            item { Box(modifier = Modifier.padding(horizontal = 16.dp)) { SymptomChart() } }
-            item { Box(modifier = Modifier.padding(horizontal = 16.dp)) { LifestyleImpact() } }
+            item { Box(modifier = Modifier.padding(horizontal = 12.dp)) { WeightChart() } }
+            item { Box(modifier = Modifier.padding(horizontal = 4.dp)) { SymptomChart() } }
+            item { Box(modifier = Modifier.padding(horizontal = 4.dp)) { LifestyleImpact() } }
             // Bottom spacing to ensure content scrolls above the floating nav
             item { Spacer(modifier = Modifier.height(110.dp)) }
         }
